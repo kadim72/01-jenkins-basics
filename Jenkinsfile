@@ -6,13 +6,13 @@ pipeline {
 
         stage('Setup') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'jenkins-tn', usernameVariable: "myuser", passwordVariable: "mypassword")]) {
+                // withCredentials([usernamePassword(credentialsId: 'jenkins-tn', usernameVariable: "myuser", passwordVariable: "mypassword")]) {
 
-                    sh '''
-                    echo ${myuser}
-                    echo ${mypassword}
-                    '''
-                }
+                //     sh '''
+                //     echo ${myuser}
+                //     echo ${mypassword}
+                //     '''
+                // }
 
                 sh "pip install -r requirements.txt"
             
