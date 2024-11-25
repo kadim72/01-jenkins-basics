@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        MYVAR="123456"
+        MYVAR = "123456"
     }
 
     stages {
@@ -16,11 +16,11 @@ pipeline {
                 //     echo ${mypassword}
                 //     '''
                 // }
-                sh "echo ${JOB_NAME}"
+              
                 echo "${MYVAR}"
                 echo "-----"
                 echo "${JOB_NAME}"
-                sh 'printenv'
+             
                 sh "pip install -r requirements.txt"
 
             
