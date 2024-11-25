@@ -33,6 +33,7 @@ pipeline {
                 echo "The database IP is : ${env.DB_HOST}"
                 echo "USER is : ${USERNAME}"
                 echo "PASSWORD is : ${PASSWORD}"
+                printenv
                 
             }
         }    
