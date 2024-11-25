@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-
+        MYVAR="123456"
     }
 
     stages {
@@ -17,6 +17,7 @@ pipeline {
                 //     '''
                 // }
                 sh 'echo "${JOB_NAME}"'
+                echo ${MYVAR}
                 echo "-----"
                 echo "${JOB_NAME}"
                 sh 'printenv'
@@ -26,7 +27,7 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
+            steps http://127.0.0.1:8080/job/flask-with-pipeline/build?token=testtoken{
                 sh "pytest"
                 
             }
