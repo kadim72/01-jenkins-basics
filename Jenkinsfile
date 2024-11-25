@@ -1,7 +1,9 @@
 pipeline {
     agent any
     environment {
-        MYVAR = "123456"
+        DB_HOST = '172.0.0.1'
+        USERNAME = "USER1"
+        PASSWORD = "password123"
     }
 
     stages {
@@ -17,13 +19,10 @@ pipeline {
                 //     '''
                 // }
 
-                sh 'echo "${MYVAR}"'
-                 echo "-----"
-                echo "${MYVAR}"
-                echo "-----"
-                echo "${JOB_NAME}"
+               
              
                 sh "pip install -r requirements.txt"
+        
 
             
             }
@@ -31,19 +30,22 @@ pipeline {
         stage('Test') {
             steps {
                 sh "pytest"
+                echo "The database IP is : ${env.DB_HOST}"
+                echo "USER is : ${USERNAME}"
+                echo "PASSWORD is : ${PASSWORD}"
                 
             }
         }    
-        stage('Deployment') {
-            input {
-                message "Do you want to proceed further?"
-                ok "Yes"
-            }
-            steps {
-                echo "Running Deployment"
+        // stage('Deployment') {
+        //     input {
+        //         message "Do you want to proceed further?"
+        //         ok "Yes"
+        //     }
+        //     steps {
+        //         echo "Running Deployment"
                 
-            }
-        } 
+        //     }
+        // } 
         
             
     }
