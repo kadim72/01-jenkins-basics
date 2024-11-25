@@ -4,24 +4,23 @@ pipeline {
     stages {
         stage('Setup & Test'){
          
-                parallel (
+                parallel {
 
-                    "Setup": {
+                    stage("Setup") {
                         steps {
                             echo "Setup ..."
                             sh 'sleep 30'
                         }
                     }
 
-                    "Test": {
+                    stage("Test") {
                         steps {
                             echo "Test ..."
                             sh 'sleep 30'                    
                         }
                     }   
-                )    
+                }
         }  
            
     }     
-    
 }
