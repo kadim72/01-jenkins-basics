@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage ('Setup & Test'){
+        stage('Setup & Test'){
             parrallel {
 
                 stage('Setup') {
