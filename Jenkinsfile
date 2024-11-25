@@ -16,8 +16,8 @@ pipeline {
                 //     echo ${mypassword}
                 //     '''
                 // }
-                sh 'echo "${JOB_NAME}"'
-                echo ${MYVAR}
+                sh "echo ${JOB_NAME}"
+                echo "${MYVAR}"
                 echo "-----"
                 echo "${JOB_NAME}"
                 sh 'printenv'
