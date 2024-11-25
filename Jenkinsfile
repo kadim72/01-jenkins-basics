@@ -10,10 +10,10 @@ pipeline {
                     sh 'sleep 30'
                 }
             }
-            
+
             stage('Test') {
                 steps {
-                    ecgo "Test ..."
+                    echo "Test ..."
                     sh 'sleep 30'                    
                 }
             }   
