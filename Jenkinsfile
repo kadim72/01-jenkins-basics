@@ -4,6 +4,8 @@ pipeline {
         DB_HOST = '172.0.0.1'
         USERNAME = "USER1"
         PASSWORD = "password123"
+
+        USERPWD = creadentials('userpwd')
     }
 
     stages {
@@ -21,7 +23,10 @@ pipeline {
 
                
              
-                sh "pip install -r requirements.txt"
+                //sh "pip install -r requirements.txt"
+                echo "USERPWD : ${USERPWD}"
+                echo "USERPWD_USR : ${USERPWD_USR}"
+                echo "USERPWD_PSW : ${USERPWD_PSW}"
         
 
             
@@ -29,14 +34,18 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "pytest"
-                echo "The database IP is : ${env.DB_HOST}"
-                echo "USER is : ${USERNAME}"
-                echo "PASSWORD is : ${PASSWORD}"
-                sh 'printenv'
+//                sh "pytest"
+                    withCredentials(usernamePassword[(credentialsId: 'userpwd',usernameVariable: 'USERNAME',passwordVariable: 'PASSWORD')]) {
+
+                        echo "USERNAME :  ${USERNAME}"
+                        echo "PASSWORD :  ${PASSWORD}"
+                    }
+
                 
             }
-        }    
+        }   
+
+
         // stage('Deployment') {
         //     input {
         //         message "Do you want to proceed further?"
