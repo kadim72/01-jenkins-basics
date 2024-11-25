@@ -3,8 +3,8 @@ pipeline {
 
     stages {
         stage('Setup & Test'){
-            steps {
-                parrallel {
+         
+                parallel {
 
                     stage('Setup') {
                         steps {
@@ -21,7 +21,7 @@ pipeline {
                     }   
 
                 }    
-            }    
+               
         }     
     }
 }
