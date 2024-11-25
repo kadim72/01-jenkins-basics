@@ -16,7 +16,9 @@ pipeline {
                 //     echo ${mypassword}
                 //     '''
                 // }
-              
+
+                sh 'echo "${MYVAR}"'
+                 echo "-----"
                 echo "${MYVAR}"
                 echo "-----"
                 echo "${JOB_NAME}"
@@ -27,7 +29,7 @@ pipeline {
             }
         }
         stage('Test') {
-            steps http://127.0.0.1:8080/job/flask-with-pipeline/build?token=testtoken{
+            steps {
                 sh "pytest"
                 
             }
