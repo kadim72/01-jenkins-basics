@@ -6,14 +6,14 @@ pipeline {
          
                 parallel {
 
-                    stage('Setup') {
+                    "Setup": {
                         steps {
                             echo "Setup ..."
                             sh 'sleep 30'
                         }
                     }
 
-                    stage('Test') {
+                    "Test": {
                         steps {
                             echo "Test ..."
                             sh 'sleep 30'                    
