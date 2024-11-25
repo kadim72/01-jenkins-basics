@@ -35,7 +35,7 @@ pipeline {
         stage('Test') {
             steps {
 //                sh "pytest"
-                    withCredentials(usernamePassword[(credentialsId: 'userpwd',usernameVariable: 'USERNAME',passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'userpwd',usernameVariable: 'USERNAME',passwordVariable: 'PASSWORD')]) {
 
                         echo "USERNAME :  ${USERNAME}"
                         echo "PASSWORD :  ${PASSWORD}"
