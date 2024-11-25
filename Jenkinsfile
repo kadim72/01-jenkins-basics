@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Setup & Test'){
          
-                parallel {
+                parallel (
 
                     "Setup": {
                         steps {
@@ -19,9 +19,9 @@ pipeline {
                             sh 'sleep 30'                    
                         }
                     }   
-
-                }    
-               
-        }     
-    }
+                )    
+        }  
+           
+    }     
+    
 }
