@@ -5,7 +5,7 @@ pipeline {
         USERNAME = "USER1"
         PASSWORD = "password123"
 
-        USERPWD = creadentials('userpwd')
+        USERPWD = credentials('userpwd')
     }
 
     stages {
