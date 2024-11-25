@@ -9,7 +9,7 @@ pipeline {
     }
 
     stages {
-
+        parrallel {
 
         stage('Setup') {
             steps {
@@ -27,6 +27,7 @@ pipeline {
                 echo "USERPWD : ${USERPWD}"
                 echo "USERPWD_USR : ${USERPWD_USR}"
                 echo "USERPWD_PSW : ${USERPWD_PSW}"
+                sh 'sleep 30'
         
 
             
@@ -39,12 +40,14 @@ pipeline {
 
                         echo "USERNAME :  ${USERNAME}"
                         echo "PASSWORD :  ${PASSWORD}"
+                            sh 'sleep 30'
                     }
 
                 
             }
         }   
 
+        }
 
         // stage('Deployment') {
         //     input {
