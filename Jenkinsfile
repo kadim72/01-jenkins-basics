@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+
+    }
 
     stages {
 
@@ -13,8 +16,12 @@ pipeline {
                 //     echo ${mypassword}
                 //     '''
                 // }
-
+                sh 'echo "${JOB_NAME}"'
+                echo "-----"
+                echo "${JOB_NAME}"
+                sh 'printenv'
                 sh "pip install -r requirements.txt"
+
             
             }
         }
