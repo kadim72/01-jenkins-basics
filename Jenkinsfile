@@ -1,27 +1,17 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Setup & Test'){
-         
-                parallel (
-
-                    "Setup": {
-                        steps {
-                            echo "Setup ..."
-                            sh 'sleep 30'
-                        }
+stages {
+    stage('Parallel Execution') {
+        steps {
+            parallel (
+                "Setup": {
+                    echo "setup ..."
+                    sh 'sleep 30'
+                },
+                "Test": {
+                    echo "test ..."
+                    sh 'sleep 30'
                     }
-
-                    "Test": {
-                        steps {
-                            echo "Test ..."
-                            sh 'sleep 30'                    
-                        }
-                    }   
-                )    
-        }  
-           
-    }     
-    
+                }
+            )
+        }
+    }
 }
