@@ -23,10 +23,15 @@ pipeline {
         }
 
         stage('deploy') {
-            when {
-                expression {
-                    params.RUN_TESTS == true
-                }
+            // when {
+            //     expression {
+            //         params.RUN_TESTS == true
+            //     }
+            // }
+
+            input {
+                message "veux tu deployer"
+                ok "Oui, deploie"
             }
             steps {
                 echo  "deploying in env : ${params.ENVIRONMENT}"
