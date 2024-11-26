@@ -25,7 +25,7 @@ pipeline {
         stage('deploy') {
             when {
                 parameters {
-                    params.RUN_TESTS == true
+                    ${params.RUN_TESTS} == true
                 }
             }
             steps {
