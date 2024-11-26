@@ -7,34 +7,33 @@ pipeline {
     }
 
     stages {
-       
+        stage("Setup") {
+            steps {
+                echo "Setup ..."
+                sh 'sleep 1'
+            }
+        }
 
-                    stage("Setup") {
-                        steps {
-                            echo "Setup ..."
-                            sh 'sleep 30'
-                        }
-                    }
+        stage("Test") {
+            steps {
+                echo "Test ..."
+                sh 'sleep 1'                    
+            }
 
-                    stage("Test") {
-                        steps {
-                            echo "Test ..."
-                            sh 'sleep 30'                    
-                        }
-  
-        
-                    stage('deploy') {
-                        when {
-                            parameters {
-                                params.RUN_TESTS == true
-                            }
-                        }
-                        steps {
-                            echo  "deploying in env : ${params.ENVIRONMENT}"
-                        }
+        }
 
-                    }
-        }  
+        stage('deploy') {
+            when {
+                parameters {
+                    params.RUN_TESTS == true
+                }
+            }
+            steps {
+                echo  "deploying in env : ${params.ENVIRONMENT}"
+            }
+
+        }
+    }  
            
-    }     
-}
+}     
+
