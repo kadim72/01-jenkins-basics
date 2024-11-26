@@ -1,10 +1,13 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'give the environment')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: "run test pipeline")
+    }
+
     stages {
-        stage('Setup & Test'){
-         
-                parallel {
+       
 
                     stage("Setup") {
                         steps {
@@ -18,8 +21,19 @@ pipeline {
                             echo "Test ..."
                             sh 'sleep 30'                    
                         }
-                    }   
-                }
+  
+        
+                    stage('deploy') {
+                        when {
+                            parameters {
+                                params.RUN_TESTS == true
+                            }
+                        }
+                        steps {
+                            echo  "deploying in env : ${params.ENVIRONMENT}"
+                        }
+
+                    }
         }  
            
     }     
